@@ -6,6 +6,7 @@
   font-family: $font-family-secondary;
   font-weight: 700;
   font-size: 2em;
+  box-shadow: 4px 4px 10px #888b;
 
   &:active:hover {
     background-color: $color-primary-translucent;

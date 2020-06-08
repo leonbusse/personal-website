@@ -28,6 +28,7 @@
       border-radius: 7.5em;
       object-fit: cover;
       margin: 2em;
+      box-shadow: 4px 4px 10px #888b;
     }
     .about-section {
       font-size: $font-size-small;
@@ -47,7 +48,7 @@
   .card {
     padding: 10em 0;
     margin: 10em 0;
-    background: $card-color;
+    background: $color-card;
     position: relative;
     z-index: 1;
 
@@ -63,6 +64,7 @@
       transform: skewY(-5deg);
       transform-origin: 0%;
       z-index: -1;
+      // box-shadow: 0px -2px 2px #8882;
     }
 
     &:after {
@@ -77,6 +79,7 @@
       transform: skewY(-5deg);
       transform-origin: 100%;
       z-index: -1;
+      box-shadow: 0px 8px 5px #8888;
     }
   }
 }

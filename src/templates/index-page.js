@@ -6,40 +6,42 @@ import Button from "../components/Button";
 
 import Layout from "../components/Layout";
 
-export const IndexPageTemplate = ({ intro, about }) => (
-  <div className="index-page">
-    <div style={{ height: "6em" }} />
-    <section className="intro-section">
-      <h2 className="subtitle">{intro.greeting}</h2>
-      <h1 className="maintitle">{intro.name}</h1>
-      <h2 className="subtitle">{intro.tagline}</h2>
-      <div className="center-horizontal">
-        <img
-          className="profile-picture"
-          src={
-            !!intro.image.image.childImageSharp
-              ? intro.image.image.childImageSharp.fluid.src
-              : intro.image.image
-          }
-          alt={intro.image.alt}
-        ></img>
-      </div>
-      <p className="about">{intro.about}</p>
-      <div style={{ height: "3em" }} />
-      <Button>{intro.contactButton}</Button>
-    </section>
-    <div className="intro-section-placeholder" />
-    <section className="about-section card">
-      <div className="container">
-        <h2>{about.who.title}</h2>
-        <p>{about.who.text}</p>
-        <div style={{ height: "6em" }} />
-        <h2>{about.what.title}</h2>
-        <p>{about.what.text}</p>
-      </div>
-    </section>
-  </div>
-);
+export const IndexPageTemplate = ({ intro, about }) => {
+  return (
+    <div className="index-page">
+      <div style={{ height: "6em" }} />
+      <section className="intro-section">
+        <h2 className="subtitle">{intro.greeting}</h2>
+        <h1 className="maintitle">{intro.name}</h1>
+        <h2 className="subtitle">{intro.tagline}</h2>
+        <div className="center-horizontal">
+          <img
+            className="profile-picture"
+            src={
+              !!intro.image.image.childImageSharp
+                ? intro.image.image.childImageSharp.fluid.src
+                : intro.image.image
+            }
+            alt={intro.image.alt}
+          ></img>
+        </div>
+        <p className="about">{intro.about}</p>
+        <div style={{ height: "3em" }} />
+        <Button>{intro.contactButton}</Button>
+      </section>
+      <div className="intro-section-placeholder" />
+      <section className="about-section card">
+        <div className="container">
+          <h2>{about.who.title}</h2>
+          <p>{about.who.text}</p>
+          <div style={{ height: "6em" }} />
+          <h2>{about.what.title}</h2>
+          <p>{about.what.text}</p>
+        </div>
+      </section>
+    </div>
+  );
+};
 
 IndexPageTemplate.propTypes = {
   intro: PropTypes.shape({
