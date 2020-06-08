@@ -1,0 +1,53 @@
+@import "./consts";
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font: 100% $font-stack;
+  background-color: $background-color;
+  color: $color-text;
+  font-family: $font-family-primary;
+}
+
+* {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-inline-start: 0;
+  padding-inline-end: 0;
+}
+
+h1 {
+  font-size: $font-size-huge;
+  font-family: $font-family-secondary;
+  font-weight: 300;
+  color: $color-primary;
+  line-height: 1.5em;
+}
+
+h2 {
+  font-size: $font-size-big;
+  font-family: $font-family-primary;
+  font-weight: 300;
+  color: $color-primary;
+  line-height: 1.5em;
+}
+
+h3 {
+  font-size: $font-size-medium;
+  font-family: $font-family-primary;
+  font-weight: 300;
+  line-height: 1.5em;
+}
+
+p {
+  line-height: 1.5em;
+  font-size: $font-size-small;
+}
+
+.hidden {
+  display: none !important;
+}

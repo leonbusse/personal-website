@@ -1,0 +1,37 @@
+.navbar {
+  height: 6em;
+  padding: 1em 2em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  .container {
+    height: 100%;
+    display: grid;
+    grid-template: "logo . burger" 1fr / auto 1fr auto;
+    align-items: center;
+  }
+
+  .logo {
+    grid-area: logo;
+    height: 100%;
+  }
+
+  .links {
+    li {
+      list-style-type: none;
+      text-align: start;
+    }
+  }
+
+  .burgermenu {
+    grid-area: burger;
+    height: 40%;
+    width: 40%;
+    margin-right: 1em;
+    img {
+      height: 100%;
+    }
+  }
+}
