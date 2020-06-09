@@ -1,6 +1,6 @@
 import React from "react";
 import "./Navbar.scss";
-import useScrollThreshold from "../utils/hooks";
+import { useScrollThreshold } from "../utils/hooks";
 
 const Navbar = () => {
   const scrolled = useScrollThreshold(10);

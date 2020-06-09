@@ -4,9 +4,11 @@
   border: 3px solid $color-primary;
   padding: 0.5em 0.8em;
   font-family: $font-family-secondary;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 2em;
   box-shadow: 4px 4px 10px #888b;
+  background-color: $background-color;
+  width: fit-content;
 
   &:active:hover {
     background-color: $color-primary-translucent;

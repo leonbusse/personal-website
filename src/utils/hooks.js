@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { useRef } from "react";
 
-export default function useScrollThreshold(threshold) {
+export function useScrollThreshold(threshold) {
   const [exceeded, setExceeded] = useState(false);
   useEffect(() => {
     function onScroll() {
@@ -12,4 +13,13 @@ export default function useScrollThreshold(threshold) {
   }, []);
 
   return exceeded;
+}
+
+export function useConstantVh() {
+  const vhRef = useRef(null);
+  if (typeof window != "undefined" && vhRef.current == null) {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+    vhRef.current = vh;
+  }
 }

@@ -11,10 +11,10 @@ export const IndexPageTemplate = ({ intro, about }) => {
     <div className="index-page">
       <div style={{ height: "6em" }} />
       <section className="intro-section">
-        <h2 className="subtitle">{intro.greeting}</h2>
+        <h2 className="greeting">{intro.greeting}</h2>
         <h1 className="maintitle">{intro.name}</h1>
         <h2 className="subtitle">{intro.tagline}</h2>
-        <div className="center-horizontal">
+        <div className="profile-picture-wrapper">
           <img
             className="profile-picture"
             src={
@@ -26,8 +26,7 @@ export const IndexPageTemplate = ({ intro, about }) => {
           ></img>
         </div>
         <p className="about">{intro.about}</p>
-        <div style={{ height: "3em" }} />
-        <Button>{intro.contactButton}</Button>
+        <Button className="contact">{intro.contactButton}</Button>
       </section>
       <div className="intro-section-placeholder" />
       <section className="about-section card">

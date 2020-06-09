@@ -6,18 +6,66 @@
   .intro-section {
     position: fixed;
     margin: 0 2em 0 2em;
+    height: 75vh;
+    height: calc(var(--vh, 1vh) * 75);
+
+    display: grid;
+    grid-template:
+      "." 1fr
+      "greeting" auto
+      "." 0.5em
+      "name" auto
+      "." 0.5em
+      "subtitle" auto
+      "." 1fr
+      "picture" auto
+      "." 1fr
+      "about" auto
+      "." 4fr
+      "contact" auto
+      "." 1fr / 100%;
+
     .maintitle {
-      font-size: 7.2em;
+      grid-area: name;
+
+      font-size: 5.2em;
       font-family: $font-family-secondary;
       margin-left: -4px;
       line-height: 1em;
+
+      @media (min-width: 370px) {
+        font-size: 6.4em;
+      }
+
+      @media (min-width: 400px) {
+        font-size: 7.2em;
+      }
     }
-    .subtitle {
-      font-size: $font-size-medium;
+    .greeting {
+      grid-area: greeting;
+
+      font-size: 2em;
       font-family: $font-family-primary;
       color: $color-text;
+
+      @media (min-width: 370px) {
+        font-size: $font-size-medium;
+      }
     }
-    .center-horizontal {
+    .subtitle {
+      grid-area: subtitle;
+
+      font-size: 2em;
+      font-family: $font-family-primary;
+      color: $color-text;
+
+      @media (min-width: 370px) {
+        font-size: $font-size-medium;
+      }
+    }
+    .profile-picture-wrapper {
+      grid-area: picture;
+
       display: flex;
       justify-content: center;
       direction: row;
@@ -27,16 +75,21 @@
       width: 15em;
       border-radius: 7.5em;
       object-fit: cover;
-      margin: 2em;
       box-shadow: 4px 4px 10px #888b;
     }
-    .about-section {
+    .about {
+      grid-area: about;
+
       font-size: $font-size-small;
+    }
+    .contact {
+      grid-area: contact;
     }
   }
 
   .intro-section-placeholder {
-    height: 50em;
+    height: 75vh;
+    height: calc(var(--vh, 1vh) * 75);
   }
 
   .about-section {
@@ -47,7 +100,7 @@
 
   .card {
     padding: 10em 0;
-    margin: 10em 0;
+    margin: 5em 0 0;
     background: $color-card;
     position: relative;
     z-index: 1;

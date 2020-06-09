@@ -5,8 +5,10 @@ import Navbar from "../components/Navbar";
 import "../all.scss";
 import useSiteMetadata from "./SiteMetadata";
 import { withPrefix } from "gatsby";
+import { useConstantVh } from "../utils/hooks";
 
 const TemplateWrapper = ({ children }) => {
+  useConstantVh();
   const { title, description } = useSiteMetadata();
   return (
     <div>
