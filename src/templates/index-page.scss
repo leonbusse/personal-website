@@ -8,6 +8,7 @@
     margin: 0 2em 0 2em;
     height: 75vh;
     height: calc(var(--vh, 1vh) * 75);
+    z-index: 1;
 
     display: grid;
     grid-template:
@@ -103,7 +104,8 @@
     margin: 5em 0 0;
     background: $color-card;
     position: relative;
-    z-index: 1;
+    z-index: 10;
+    margin-bottom: $footer-height;
 
     &:before {
       background: inherit;

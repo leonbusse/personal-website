@@ -48,6 +48,10 @@ p {
   font-size: $font-size-small;
 }
 
+a {
+  color: $color-primary;
+}
+
 .hidden {
   display: none !important;
 }

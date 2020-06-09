@@ -3,14 +3,18 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import "./index-page.scss";
 import Button from "../components/Button";
-
 import Layout from "../components/Layout";
+import { useScrollThreshold } from "../utils/hooks";
 
 export const IndexPageTemplate = ({ intro, about }) => {
+  const hideIntro =
+    typeof window == "undefined"
+      ? false
+      : useScrollThreshold(window.innerHeight);
   return (
     <div className="index-page">
       <div style={{ height: "6em" }} />
-      <section className="intro-section">
+      <section className={"intro-section" + (hideIntro ? " hidden" : "")}>
         <h2 className="greeting">{intro.greeting}</h2>
         <h1 className="maintitle">{intro.name}</h1>
         <h2 className="subtitle">{intro.tagline}</h2>
