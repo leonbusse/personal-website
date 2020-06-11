@@ -3,7 +3,7 @@ import "./AnimatedLogo.scss";
 
 const AnimatedLogo = ({ active }) => {
   return (
-    <>
+    <div className="AnimatedLogo">
       <svg
         width="86"
         height="65"
@@ -23,7 +23,7 @@ const AnimatedLogo = ({ active }) => {
           x2="84.82"
           y2="22.7658"
           stroke="#F35321"
-          stroke-width="2"
+          strokeWidth="2"
           className="svg-elem-2"
         ></line>
         <line
@@ -32,11 +32,11 @@ const AnimatedLogo = ({ active }) => {
           x2="42.82"
           y2="1.29289"
           stroke="#F35321"
-          stroke-width="2"
+          strokeWidth="2"
           className="svg-elem-3"
         ></line>
       </svg>
-    </>
+    </div>
   );
 };
 

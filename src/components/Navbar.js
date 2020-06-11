@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./Navbar.scss";
 import { useScrollThreshold } from "../utils/hooks";
 import AnimatedLogo from "./AnimatedLogo";
+import AnimatedBurgerIcon from "./AnimatedBurgerIcon";
 
 const Navbar = () => {
   const scrolled = useScrollThreshold(10);
   const [logoVisible, setLogoVisible] = useState(false);
   useEffect(() => {
-    setTimeout(setLogoVisible(true), 100);
-    return () => {};
+    setTimeout(() => setLogoVisible(true), 100);
   });
   return (
     <nav
@@ -24,7 +24,7 @@ const Navbar = () => {
           <li>Contact</li>
         </ul>
         <div className="burgermenu">
-          <img src="/img/burger.svg"></img>
+          <AnimatedBurgerIcon active={logoVisible} />
         </div>
       </div>
     </nav>

@@ -11,7 +11,7 @@ const Footer = () => {
       </p> */}
       <p>Copyright &copy; Leon Busse 2020</p>
       <p style={{ gridArea: "madeby" }}>
-        Made by <a href="https://www.gatsbyjs.org/">Gatsby</a> with &hearts;
+        Made by <a href="https://www.gatsbyjs.org/">Gatsby</a> with &#9825;
       </p>
     </footer>
   );
