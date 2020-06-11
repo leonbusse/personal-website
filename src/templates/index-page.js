@@ -7,10 +7,8 @@ import Layout from "../components/Layout";
 import { useScrollThreshold } from "../utils/hooks";
 
 export const IndexPageTemplate = ({ intro, about }) => {
-  const hideIntro =
-    typeof window == "undefined"
-      ? false
-      : useScrollThreshold(window.innerHeight);
+  const hideIntro = useScrollThreshold(window.innerHeight);
+  const tech = about.what.tech.split(", ");
   return (
     <div className="index-page">
       <div style={{ height: "6em" }} />
@@ -40,6 +38,14 @@ export const IndexPageTemplate = ({ intro, about }) => {
           <div style={{ height: "6em" }} />
           <h2>{about.what.title}</h2>
           <p>{about.what.text}</p>
+          <ul className="tech-container">
+            {tech.map((str) => (
+              <li>{str}</li>
+            ))}
+          </ul>
+          <div style={{ height: "6em" }} />
+          <h2>{about.experience.title}</h2>
+          <p>Lorem ipsum...</p>
         </div>
       </section>
     </div>
@@ -53,10 +59,10 @@ IndexPageTemplate.propTypes = {
     tagline: PropTypes.string,
     image: PropTypes.shape({
       image: PropTypes.object,
-      alt: PropTypes.string
-    })
+      alt: PropTypes.string,
+    }),
   }),
-  about: PropTypes.string
+  about: PropTypes.string,
 };
 
 const IndexPage = ({ data }) => {
@@ -72,9 +78,9 @@ const IndexPage = ({ data }) => {
 IndexPage.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
-      frontmatter: PropTypes.object
-    })
-  })
+      frontmatter: PropTypes.object,
+    }),
+  }),
 };
 
 export default IndexPage;
@@ -108,6 +114,10 @@ export const pageQuery = graphql`
           what {
             title
             text
+            tech
+          }
+          experience {
+            title
           }
         }
       }

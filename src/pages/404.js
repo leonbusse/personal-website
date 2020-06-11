@@ -1,13 +1,14 @@
-import React from 'react'
-import Layout from '../components/Layout'
+import React, { useEffect } from "react";
+import Layout from "../components/Layout";
 
-const NotFoundPage = () => (
-  <Layout>
-    <div>
-      <h1>NOT FOUND</h1>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-    </div>
-  </Layout>
-)
+const NotFoundPage = () => {
+  return (
+    <Layout>
+      <div style={{ marginTop: 100 }}>
+        <p>404</p>
+      </div>
+    </Layout>
+  );
+};
 
-export default NotFoundPage
+export default NotFoundPage;

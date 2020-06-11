@@ -3,7 +3,7 @@ import "./Footer.scss";
 import { useScrollThreshold } from "../utils/hooks";
 
 const Footer = () => {
-  const showFooter = useScrollThreshold(200);
+  const showFooter = useScrollThreshold(window.innerHeight);
   return (
     <footer className={"footer" + (showFooter ? "" : " hidden")}>
       {/* <p style={{ gridArea: "github" }}>
@@ -11,7 +11,7 @@ const Footer = () => {
       </p> */}
       <p>Copyright &copy; Leon Busse 2020</p>
       <p style={{ gridArea: "madeby" }}>
-        Made by <a href="https://www.gatsbyjs.org/">Gadsby</a> with &hearts;
+        Made by <a href="https://www.gatsbyjs.org/">Gatsby</a> with &hearts;
       </p>
     </footer>
   );

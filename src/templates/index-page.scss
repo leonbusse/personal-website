@@ -18,9 +18,9 @@
       "name" auto
       "." 0.5em
       "subtitle" auto
-      "." 1fr
+      "." 2fr
       "picture" auto
-      "." 1fr
+      "." 2fr
       "about" auto
       "." 4fr
       "contact" auto
@@ -96,6 +96,28 @@
   .about-section {
     .container {
       margin: 0 2em 0 2em;
+    }
+
+    .tech-container {
+      margin-top: 1em;
+
+      display: grid;
+      grid-template:
+        ". . ." auto
+        ". . ." auto
+        ". . ." auto / 1fr 1fr 1fr;
+      grid-auto-flow: column;
+
+      list-style: none;
+      li::before {
+        content: "\25BA"; // 25B7
+        color: $color-primary;
+        display: inline-block;
+        width: 2em;
+        font-size: 0.5em;
+        position: relative;
+        top: -0.25em;
+      }
     }
   }
 
