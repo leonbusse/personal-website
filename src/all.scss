@@ -26,6 +26,22 @@ h1 {
   font-weight: 300;
   color: $color-primary;
   line-height: 1.5em;
+
+  @include breakpoint-small {
+    font-size: calc(#{$screen-small-multiplier} * #{$font-size-huge});
+  }
+
+  @include breakpoint-medium {
+    font-size: calc(#{$screen-medium-multiplier} * #{$font-size-huge});
+  }
+
+  @include breakpoint-large {
+    font-size: calc(#{$screen-large-multiplier} * #{$font-size-huge});
+  }
+
+  @include breakpoint-xlarge {
+    font-size: calc(#{$screen-xlarge-multiplier} * #{$font-size-huge});
+  }
 }
 
 h2 {
@@ -34,6 +50,22 @@ h2 {
   font-weight: 300;
   color: $color-primary;
   line-height: 1.5em;
+
+  @include breakpoint-small {
+    font-size: calc(#{$screen-small-multiplier} * #{$font-size-big});
+  }
+
+  @include breakpoint-medium {
+    font-size: calc(#{$screen-medium-multiplier} * #{$font-size-big});
+  }
+
+  @include breakpoint-large {
+    font-size: calc(#{$screen-large-multiplier} * #{$font-size-big});
+  }
+
+  @include breakpoint-xlarge {
+    font-size: calc(#{$screen-xlarge-multiplier} * #{$font-size-big});
+  }
 }
 
 h3 {
@@ -41,12 +73,46 @@ h3 {
   font-family: $font-family-primary;
   font-weight: 300;
   line-height: 1.5em;
+
+  $testvar: 2;
+
+  @include breakpoint-small {
+    font-size: calc(#{$screen-small-multiplier} * #{$font-size-medium});
+  }
+
+  @include breakpoint-medium {
+    font-size: calc(#{$screen-medium-multiplier} * #{$font-size-medium});
+  }
+
+  @include breakpoint-large {
+    font-size: calc(#{$screen-large-multiplier} * #{$font-size-medium});
+  }
+
+  @include breakpoint-xlarge {
+    font-size: calc(#{$screen-xlarge-multiplier} * #{$font-size-medium});
+  }
 }
 
 p,
 li {
   line-height: 1.5em;
   font-size: $font-size-small;
+
+  @include breakpoint-small {
+    font-size: calc(#{$screen-small-multiplier} * #{$font-size-small});
+  }
+
+  @include breakpoint-medium {
+    font-size: calc(#{$screen-medium-multiplier} * #{$font-size-small});
+  }
+
+  @include breakpoint-large {
+    font-size: calc(#{$screen-large-multiplier} * #{$font-size-small});
+  }
+
+  @include breakpoint-xlarge {
+    font-size: calc(#{$screen-xlarge-multiplier} * #{$font-size-small});
+  }
 }
 
 a {

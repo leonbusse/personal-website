@@ -3,9 +3,9 @@
 .index-page {
   margin-top: 4em;
 
-  .intro-section {
+  .hero {
     position: fixed;
-    margin: 0 2em 0 2em;
+    margin: $navbar-height 2em 0 2em;
     height: 75vh;
     height: calc(var(--vh, 1vh) * 75);
     z-index: 1;
@@ -26,42 +26,82 @@
       "contact" auto
       "." 1fr / 100%;
 
+    @include section-width;
+
+    @include breakpoint-small {
+      margin: 0 4em;
+      grid-template:
+        ". ." 1fr
+        "greeting greeting" auto
+        ". ." 0.5em
+        "name name" auto
+        ". ." 0.5em
+        "subtitle subtitle" auto
+        ". ." 2fr
+        "about picture" auto
+        ". ." 4fr
+        "contact contact" auto
+        ". ." 1fr / 2fr 1fr;
+    }
+
+    @include breakpoint-medium {
+      max-height: 40em;
+      margin: 10em calc((100vw - 60em) / 2);
+    }
+
+    @include breakpoint-large {
+      max-height: 50em;
+      margin: 15em calc((100vw - 80em) / 2);
+    }
+
     .maintitle {
       grid-area: name;
 
-      font-size: 5.2em;
+      font-size: 5.2rem;
       font-family: $font-family-secondary;
       margin-left: -4px;
       line-height: 1em;
 
       @media (min-width: 370px) {
-        font-size: 6.4em;
+        font-size: 6.4rem;
       }
 
       @media (min-width: 400px) {
-        font-size: 7.2em;
+        font-size: 7.2rem;
+      }
+
+      @include breakpoint-large {
+        font-size: 10rem;
       }
     }
     .greeting {
       grid-area: greeting;
 
-      font-size: 2em;
+      font-size: 2rem;
       font-family: $font-family-primary;
       color: $color-text;
 
       @media (min-width: 370px) {
         font-size: $font-size-medium;
       }
+
+      @include breakpoint-large {
+        font-size: $font-size-big;
+      }
     }
     .subtitle {
       grid-area: subtitle;
 
-      font-size: 2em;
+      font-size: 2rem;
       font-family: $font-family-primary;
       color: $color-text;
 
       @media (min-width: 370px) {
         font-size: $font-size-medium;
+      }
+
+      @include breakpoint-large {
+        font-size: $font-size-big;
       }
     }
     .profile-picture-wrapper {
@@ -70,6 +110,10 @@
       display: flex;
       justify-content: center;
       direction: row;
+
+      @include breakpoint-medium {
+        margin: 2em;
+      }
     }
     .profile-picture {
       height: 15em;
@@ -77,25 +121,60 @@
       border-radius: 7.5em;
       object-fit: cover;
       box-shadow: 4px 4px 10px #888b;
+
+      @include breakpoint-large {
+        height: 20em;
+        width: 20em;
+        border-radius: 10em;
+      }
     }
     .about {
       grid-area: about;
 
+      align-self: center;
       font-size: $font-size-small;
+
+      @include breakpoint-large {
+        font-size: $font-size-medium;
+      }
     }
     .contact {
       grid-area: contact;
     }
   }
 
-  .intro-section-placeholder {
-    height: 75vh;
-    height: calc(var(--vh, 1vh) * 75);
+  .hero-placeholder {
+    height: 81vh;
+    height: calc(var(--vh, 1vh) * 81);
+
+    @include breakpoint-medium {
+      height: 88vh;
+      height: calc(var(--vh, 1vh) * 88);
+    }
   }
 
-  .about-section {
+  .card {
     .container {
-      margin: 0 2em 0 2em;
+      margin: 0 2em;
+
+      @include section-width;
+
+      @include breakpoint-medium {
+        margin: 0 4em;
+      }
+
+      @include breakpoint-medium {
+        margin: 10em auto;
+      }
+
+      @include breakpoint-large {
+        margin: 15em auto;
+      }
+
+      section {
+        margin-bottom: 40vh;
+        margin-bottom: calc(var(--vh, 1vh) * 40);
+      }
     }
 
     .tech-container {
@@ -114,7 +193,7 @@
         color: $color-primary;
         display: inline-block;
         width: 2em;
-        font-size: 0.5em;
+        font-size: 0.5rem;
         position: relative;
         top: -0.25em;
       }
@@ -141,7 +220,11 @@
       transform: skewY(-5deg);
       transform-origin: 0%;
       z-index: -1;
-      // box-shadow: 0px -2px 2px #8882;
+      box-shadow: 0px -2px 2px #8882;
+
+      @include breakpoint-medium {
+        transform: skewY(-3deg);
+      }
     }
 
     &:after {
@@ -157,6 +240,10 @@
       transform-origin: 100%;
       z-index: -1;
       box-shadow: 0px 8px 5px #8888;
+
+      @include breakpoint-medium {
+        transform: skewY(-3deg);
+      }
     }
   }
 }

@@ -8,8 +8,8 @@ import Layout from "../components/Layout";
 import { useScrollThreshold } from "../utils/hooks";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
-const Intro = ({ intro }) => {
-  const hideIntro = useScrollThreshold(window.innerHeight);
+const Hero = ({ hero }) => {
+  const hideHero = useScrollThreshold(window.innerHeight);
 
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
@@ -24,36 +24,36 @@ const Intro = ({ intro }) => {
       <img
         className="profile-picture"
         src={
-          !!intro.image.image.childImageSharp
-            ? intro.image.image.childImageSharp.fluid.src
-            : intro.image.image
+          !!hero.image.image.childImageSharp
+            ? hero.image.image.childImageSharp.fluid.src
+            : hero.image.image
         }
-        alt={intro.image.alt}
+        alt={hero.image.alt}
       ></img>
     </div>
   );
 
   const animatedItems = [
     <h2 style={{ transitionDelay: "100ms" }} className="greeting">
-      {intro.greeting}
+      {hero.greeting}
     </h2>,
     <h1 style={{ transitionDelay: "200ms" }} className="maintitle">
-      {intro.name}
+      {hero.name}
     </h1>,
     <h2 style={{ transitionDelay: "300ms" }} className="subtitle">
-      {intro.tagline}
+      {hero.tagline}
     </h2>,
     <ProfilePicture style={{ transitionDelay: "400ms" }} />,
     <p style={{ transitionDelay: "500ms" }} className="about">
-      {intro.about}
+      {hero.about}
     </p>,
     <div className="contact" style={{ transitionDelay: "600ms" }}>
-      <Button>{intro.contactButton}</Button>
+      <Button>{hero.contactButton}</Button>
     </div>,
   ];
 
   return (
-    <section className={"intro-section" + (hideIntro ? " hidden" : "")}>
+    <section className={"hero" + (hideHero ? " hidden" : "")}>
       <TransitionGroup component={null}>
         {isMounted &&
           animatedItems.map((item, i) => (
@@ -66,36 +66,40 @@ const Intro = ({ intro }) => {
   );
 };
 
-export const IndexPageTemplate = ({ intro, about }) => {
+export const IndexPageTemplate = ({ hero, about }) => {
   const tech = about.what.tech.split(", ");
   return (
     <div className="index-page">
-      <div style={{ height: "6em" }} />
-      <Intro intro={intro} />
-      <div className="intro-section-placeholder" />
-      <section className="about-section card">
+      {/* <div style={{ height: "6em" }} /> */}
+      <Hero hero={hero} />
+      <div className="hero-placeholder" />
+      <div className="card">
         <div className="container">
-          <h2>{about.who.title}</h2>
-          <p>{about.who.text}</p>
-          <div style={{ height: "6em" }} />
-          <h2>{about.what.title}</h2>
-          <p>{about.what.text}</p>
-          <ul className="tech-container">
-            {tech.map((str) => (
-              <li>{str}</li>
-            ))}
-          </ul>
-          <div style={{ height: "6em" }} />
-          <h2>{about.experience.title}</h2>
-          <p>Lorem ipsum...</p>
+          <section>
+            <h2>{about.who.title}</h2>
+            <p>{about.who.text}</p>
+          </section>
+          <section>
+            <h2>{about.what.title}</h2>
+            <p>{about.what.text}</p>
+            <ul className="tech-container">
+              {tech.map((str) => (
+                <li>{str}</li>
+              ))}
+            </ul>
+          </section>
+          <section>
+            <h2>{about.experience.title}</h2>
+            <p>Lorem ipsum...</p>
+          </section>
         </div>
-      </section>
+      </div>
     </div>
   );
 };
 
 IndexPageTemplate.propTypes = {
-  intro: PropTypes.object.isRequired,
+  hero: PropTypes.object.isRequired,
   about: PropTypes.string.isRequired,
 };
 
@@ -104,7 +108,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-      <IndexPageTemplate intro={frontmatter.intro} about={frontmatter.about} />
+      <IndexPageTemplate hero={frontmatter.hero} about={frontmatter.about} />
     </Layout>
   );
 };
@@ -123,7 +127,7 @@ export const pageQuery = graphql`
   query IndexPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
-        intro {
+        hero {
           greeting
           name
           tagline

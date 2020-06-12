@@ -1,6 +1,6 @@
 ---
 templateKey: index-page
-intro:
+hero:
   greeting: Hi, my name is
   name: Leon Busse
   tagline: I like to make Software. Mostly on Android and the Web.
