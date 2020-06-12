@@ -4,11 +4,12 @@
   height: $navbar-height;
   padding: 1em 2em;
   position: fixed;
-  will-change: transform;
+  will-change: transform background-color;
   top: 0;
   left: 0;
   right: 0;
-  transition: all 0.5s ease-in-out;
+  transition: background-color 0.5s ease-in-out;
+  z-index: 100;
 
   .container {
     height: 100%;
@@ -40,8 +41,27 @@
   }
 }
 
+.navbar::after {
+  content: " ";
+  height: $navbar-height;
+  padding: 1em 2em;
+  position: fixed;
+  will-change: transform;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  // box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  // background-color: $color-card;
+  box-shadow: 4px 4px 10px #888b;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.floating::after {
+  opacity: 1;
+}
+
 .floating {
   background-color: $color-card;
-  box-shadow: 4px 4px 10px #888b;
-  z-index: 100;
 }
