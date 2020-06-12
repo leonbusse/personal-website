@@ -3,7 +3,7 @@ import "./Footer.scss";
 import { useScrollThreshold } from "../utils/hooks";
 
 const Footer = () => {
-  const showFooter = useScrollThreshold(window.innerHeight);
+  const showFooter = useScrollThreshold();
   return (
     <footer className={"footer" + (showFooter ? "" : " hidden")}>
       {/* <p style={{ gridArea: "github" }}>

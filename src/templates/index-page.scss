@@ -5,6 +5,7 @@
 
   .hero {
     position: fixed;
+    will-change: transform;
     margin: $navbar-height 2em 0 2em;
     height: 75vh;
     height: calc(var(--vh, 1vh) * 75);

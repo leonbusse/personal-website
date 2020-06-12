@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 import { useRef } from "react";
 import ScrollReveal from "scrollreveal";
+import { isSSR } from "../utils";
+// import { sr } from "./sr";
 
 export function useScrollThreshold(threshold) {
+  if (!threshold && !isSSR()) {
+    threshold = window.innerHeight;
+  }
   const [exceeded, setExceeded] = useState(false);
   useEffect(() => {
-    if (typeof window == "undefined") return;
+    if (isSSR()) return;
     function onScroll() {
       const currentScrollPos = window.pageYOffset;
       setExceeded(currentScrollPos > threshold);
@@ -26,8 +31,9 @@ export function useConstantVh() {
   }
 }
 
-const isSSR = typeof window === "undefined";
-const sr = isSSR ? null : ScrollReveal();
+// const sr = typeof window === "undefined" ? null : ScrollReveal();
+// const isSSR2 = typeof window === "undefined";
+// const sr = isSSR2 ? null : ScrollReveal();
 const srConfig = {
   origin: "bottom",
   distance: "20px",
@@ -46,6 +52,6 @@ const srConfig = {
 
 export const useScrollReveal = () => {
   const revealContainer = useRef(null);
-  useEffect(() => sr.reveal(revealContainer.current, srConfig, []));
+  useEffect(() => ScrollReveal().reveal(revealContainer.current, srConfig, []));
   return revealContainer;
 };

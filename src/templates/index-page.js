@@ -9,7 +9,7 @@ import { useScrollThreshold, useScrollReveal } from "../utils/hooks";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const Hero = ({ hero }) => {
-  const hideHero = useScrollThreshold(window.innerHeight);
+  const hideHero = useScrollThreshold();
 
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
