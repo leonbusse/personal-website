@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import "./index-page.scss";
@@ -7,6 +7,7 @@ import Button from "../components/Button";
 import Layout from "../components/Layout";
 import { useScrollThreshold, useScrollReveal } from "../utils/hooks";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { preloadImage } from "../utils";
 
 const Hero = ({ hero }) => {
   const hideHero = useScrollThreshold();
@@ -19,19 +20,25 @@ const Hero = ({ hero }) => {
     }, 1400);
   });
 
-  const ProfilePicture = (otherProps) => (
-    <div className="profile-picture-wrapper" {...otherProps}>
-      <img
-        className="profile-picture"
-        src={
-          !!hero.image.image.childImageSharp
-            ? hero.image.image.childImageSharp.fluid.src
-            : hero.image.image
-        }
-        alt={hero.image.alt}
-      ></img>
-    </div>
-  );
+  const ProfilePicture = (otherProps) => {
+    const profileSrc = !!hero.image.image.childImageSharp
+      ? hero.image.image.childImageSharp.fluid.src
+      : hero.image.image;
+
+    useEffect(() => {
+      preloadImage(profileSrc);
+    }, []);
+
+    return (
+      <div className="profile-picture-wrapper" {...otherProps}>
+        <img
+          className="profile-picture"
+          src={profileSrc}
+          alt={hero.image.alt}
+        ></img>
+      </div>
+    );
+  };
 
   const animatedItems = [
     <h2 style={{ transitionDelay: "100ms" }} className="greeting">
@@ -97,6 +104,10 @@ export const IndexPageTemplate = ({ hero, about }) => {
             <h2>{about.experience.title}</h2>
             <p>Lorem ipsum...</p>
           </Section>
+          <Section>
+            <h2>{about.education.title}</h2>
+            <p>Lorem ipsum...</p>
+          </Section>
         </div>
       </div>
     </div>
@@ -160,6 +171,9 @@ export const pageQuery = graphql`
             tech
           }
           experience {
+            title
+          }
+          education {
             title
           }
         }

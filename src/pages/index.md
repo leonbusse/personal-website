@@ -22,5 +22,7 @@ about:
       I have worked very productively with these languages and technologies in the past:
     tech: Android, Kotlin, Java, React, TypeScript, CSS, Git, Jira, Jenkins
   experience:
-    title: My Experience
+    title: Experience
+  education:
+    title: Education
 ---
