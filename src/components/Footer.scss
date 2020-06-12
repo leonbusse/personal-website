@@ -1,4 +1,14 @@
+@import "../consts";
+
 .footer {
+  height: $footer-height;
+  @include breakpoint-medium {
+    height: $footer-height-medium;
+  }
+  @include breakpoint-large {
+    height: $footer-height-large;
+  }
+
   position: fixed;
   bottom: 0;
   left: 0;

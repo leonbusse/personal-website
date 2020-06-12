@@ -175,6 +175,16 @@
         margin-bottom: 40vh;
         margin-bottom: calc(var(--vh, 1vh) * 40);
       }
+
+      section:first-of-type {
+        margin-top: 20vh;
+        margin-top: calc(var(--vh, 1vh) * 20);
+      }
+
+      section:last-of-type {
+        margin-bottom: 20vh;
+        margin-bottom: calc(var(--vh, 1vh) * 20);
+      }
     }
 
     .tech-container {
@@ -206,7 +216,13 @@
     background: $color-card;
     position: relative;
     z-index: 10;
-    margin-bottom: $footer-height;
+    margin-bottom: calc(#{$footer-height} + 10rem);
+    @include breakpoint-medium {
+      margin-bottom: calc(#{$footer-height-medium} + 15em);
+    }
+    @include breakpoint-large {
+      margin-bottom: calc(#{$footer-height-large} + 15rem);
+    }
 
     &:before {
       background: inherit;

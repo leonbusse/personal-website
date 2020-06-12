@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import "./index-page.scss";
 import "../components/TransitionStyles.scss";
 import Button from "../components/Button";
 import Layout from "../components/Layout";
-import { useScrollThreshold } from "../utils/hooks";
+import { useScrollThreshold, useScrollReveal } from "../utils/hooks";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const Hero = ({ hero }) => {
@@ -66,6 +66,11 @@ const Hero = ({ hero }) => {
   );
 };
 
+const Section = ({ children }) => {
+  const revealContaienrRef = useScrollReveal();
+  return <section ref={revealContaienrRef}>{children}</section>;
+};
+
 export const IndexPageTemplate = ({ hero, about }) => {
   const tech = about.what.tech.split(", ");
   return (
@@ -75,11 +80,11 @@ export const IndexPageTemplate = ({ hero, about }) => {
       <div className="hero-placeholder" />
       <div className="card">
         <div className="container">
-          <section>
+          <Section>
             <h2>{about.who.title}</h2>
             <p>{about.who.text}</p>
-          </section>
-          <section>
+          </Section>
+          <Section>
             <h2>{about.what.title}</h2>
             <p>{about.what.text}</p>
             <ul className="tech-container">
@@ -87,11 +92,11 @@ export const IndexPageTemplate = ({ hero, about }) => {
                 <li>{str}</li>
               ))}
             </ul>
-          </section>
-          <section>
+          </Section>
+          <Section>
             <h2>{about.experience.title}</h2>
             <p>Lorem ipsum...</p>
-          </section>
+          </Section>
         </div>
       </div>
     </div>
