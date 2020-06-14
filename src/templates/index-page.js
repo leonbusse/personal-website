@@ -16,7 +16,6 @@ const Hero = ({ hero }) => {
   useEffect(() => {
     setTimeout(() => {
       setIsMounted(true);
-      console.log("is mounted now");
     }, 1400);
   });
 

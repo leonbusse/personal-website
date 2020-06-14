@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useRef } from "react";
 import ScrollReveal from "scrollreveal";
 import { isSSR } from "../utils";
-// import { sr } from "./sr";
+import { debounce } from ".";
 
 export function useScrollThreshold(threshold) {
   if (!threshold && !isSSR()) {
@@ -24,16 +24,41 @@ export function useScrollThreshold(threshold) {
 
 export function useConstantVh() {
   const vhRef = useRef(null);
-  if (typeof window != "undefined" && vhRef.current == null) {
+  const vPxRef = useRef(null);
+
+  function updateVh() {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
     vhRef.current = vh;
   }
+
+  function guardedUpdateVh() {
+    if (typeof window != "undefined") {
+      let shouldUpdate = false;
+      if (vPxRef.current == null) {
+        shouldUpdate = true;
+      } else {
+        const deltaVPx = vPxRef.current - window.innerHeight;
+        shouldUpdate = Math.abs(deltaVPx) > 80;
+      }
+      vPxRef.current = window.innerHeight;
+      if (shouldUpdate) {
+        updateVh();
+      }
+    }
+  }
+  guardedUpdateVh();
+  useEffect(() => {
+    const resizeListener = debounce(guardedUpdateVh, 500, false);
+    window.addEventListener("resize", resizeListener);
+    window.addEventListener("orientationchange", updateVh);
+    return () => {
+      window.removeEventListener("resize", resizeListener);
+      window.removeEventListener("orientationchange", updateVh);
+    };
+  }, []);
 }
 
-// const sr = typeof window === "undefined" ? null : ScrollReveal();
-// const isSSR2 = typeof window === "undefined";
-// const sr = isSSR2 ? null : ScrollReveal();
 const srConfig = {
   origin: "bottom",
   distance: "20px",
